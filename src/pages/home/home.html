@@ -1,0 +1,110 @@
+<ion-header class="analytics-header">
+  <ion-navbar class="analytics-nav">
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="timestamp">
+      <ion-segment-button class="home-segment" style="color:#40c95c" value="day">
+        Day
+      </ion-segment-button>
+      <ion-segment-button class="home-segment" style="color:#40c95c" value="month">
+        Month
+      </ion-segment-button>
+      <ion-segment-button class="home-segment" style="color:#40c95c" value="year">
+        Year
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="timestamp">
+    <ion-list *ngSwitchCase="'day'">
+            <div class="col-md-6">
+              <div style="display: block;">
+              <canvas baseChart width="100" height="50"
+                          [datasets]="lineChartData"
+                          [labels]="lineChartLabels"
+                          [options]="lineChartOptions"
+                          [colors]="lineChartColors"
+                          [legend]="lineChartLegend"
+                          [chartType]="lineChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)">
+              </canvas>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div style="display: block">
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+          </div>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'month'">
+        <div class="col-md-6">
+          <div style="display: block;">
+          <canvas baseChart width="100" height="50"
+                      [datasets]="lineChartData2"
+                      [labels]="lineChartLabels2"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+          </canvas>
+          </div>
+      </div>
+      <div class="col-md-6">
+              <div style="display: block">
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+          </div>
+</ion-list>
+
+    <ion-list *ngSwitchCase="'year'">
+            <div class="col-md-6">
+              <div style="display: block;">
+              <canvas baseChart width="100" height="50"
+                          [datasets]="lineChartData3"
+                          [labels]="lineChartLabels3"
+                          [options]="lineChartOptions"
+                          [colors]="lineChartColors"
+                          [legend]="lineChartLegend"
+                          [chartType]="lineChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)">
+              </canvas>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div style="display: block">
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+          </div>
+    </ion-list>
+  </div>
+</ion-content>
